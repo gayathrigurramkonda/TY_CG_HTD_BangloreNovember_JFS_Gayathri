@@ -1,0 +1,19 @@
+class PrimitiveDataType{
+public static void main(String[]args){
+char c='G';
+boolean b=true;
+int i=56;
+long=70900310911l;
+float f=78.98;
+double d=45.65;
+short s=3;
+System.out.ptintln("value of c is"+c);
+System.out.ptintln("value of b is"+b);
+System.out.ptintln("value of i is"+i);
+System.out.ptintln("value of f is"+f);
+System.out.ptintln("value of d is"+d);
+System.out.ptintln("value of l is"+l);
+System.out.ptintln("value of s is"+s);
+System.out.ptintln("value of c is"+c);
+}
+}
