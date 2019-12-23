@@ -11,7 +11,7 @@ public class Factory
 	   ProductDao dao= new ProductDaoImpl();//calling method present in dao and services
 	   return dao;
 }
-public static ProductService instanceOfProductServices()
+public static ProductService instanceOfProductServicesImpl()
 {
 	   ProductService services=new ProductServiceImpl();
 	   return services;

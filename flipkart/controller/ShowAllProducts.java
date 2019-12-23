@@ -7,8 +7,8 @@ import com.capgemini.flipkart.factory.Factory;
 import com.capgemini.flipkart.services.ProductService;
 
 public class ShowAllProducts {
-	public static void show() {
-		ProductService services = Factory.instanceOfProductServices();
+	public static void show(){
+		ProductService services = Factory.instanceOfProductServicesImpl();
 
 		List<ProductBean> list = services.showAllProducts();
 
@@ -16,6 +16,7 @@ public class ShowAllProducts {
 
 		if (list != null) {
 			for (ProductBean bean : list) {
+				
 				System.out.println(bean);
 			}
 

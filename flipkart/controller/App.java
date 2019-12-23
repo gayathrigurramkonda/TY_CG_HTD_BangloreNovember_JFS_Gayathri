@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class App {
 	public static void main(String[] args) {
+		System.out.println("*******WELCOME TO FLIPKART************");
 		System.out.println("press 1 to show all the Items");
 		System.out.println("press 2 to search for an Item");
 		int choice ;
@@ -15,6 +16,7 @@ public class App {
 			switch(choice)
 			{
 			case 1 :
+				
 				ShowAllProducts.show();
 				break;
 	          

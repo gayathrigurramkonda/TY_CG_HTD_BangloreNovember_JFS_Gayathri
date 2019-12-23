@@ -20,8 +20,12 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public boolean searchProduct(ProductBean bean) {
-		return dao.searchProduct(bean);
+	public ProductBean searchProduct(String productName) {
+		return dao.searchProduct(productName);
 	}
+
+	
+
+	
 
 }

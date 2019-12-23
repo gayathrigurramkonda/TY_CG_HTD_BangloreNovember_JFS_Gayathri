@@ -21,8 +21,8 @@ public class ProductDaoImpl  implements ProductDao{
 	public ProductDaoImpl(){
 	
 		try {
-			//Class.forName("com.mysql.jdbc.Driver");
-			reader =new FileReader("dbproperties");
+			Class.forName("com.mysql.jdbc.Driver");
+			reader =new FileReader("db.properties");
 			prop=new Properties();
 			prop.load(reader);
 			
@@ -39,32 +39,36 @@ public class ProductDaoImpl  implements ProductDao{
 	}
 
 	@Override
-	public boolean searchProduct(ProductBean bean) {
+	public ProductBean searchProduct(String productName) {
 		try(Connection conn=DriverManager.getConnection(prop.getProperty("dbUrl"),prop.getProperty("dbUser"),prop.getProperty("dbPassword"));
-				java.sql.PreparedStatement pstmt=conn.prepareStatement(prop.getProperty("searchQuery"));
-				)
+				java.sql.PreparedStatement pstmt=conn.prepareStatement(prop.getProperty("Query")))
 		{
-			ResultSet rs = pstmt.executeQuery();
+			pstmt.setString(1, productName);;
+			ResultSet rs=pstmt.executeQuery();
 			if(rs.next()) {
-
-				int productId = rs.getInt(1);
-				String productName = rs.getString(2);
-				double productCost = rs.getDouble(3);
-				String productClor = rs.getString(4);
-				String Description = rs.getString(5);
-				int NumberOfProducts= rs.getInt(6);
-				String postCode = rs.getString(7);
-				Integer telephoneNo = rs.getInt(8);
-				String email = rs.getString(9);
-				int count=pstmt.executeUpdate();
+				System.out.println("Productid: "+rs.getInt(1));
+				  System.out.println("productName: "+rs.getString(2));
+				  System.out.println("ProductColor: "+rs.getString(3));
+				  System.out.println("ProductDescription: "+rs.getString(4));
+				  System.out.println("ProductCost: "+rs.getString(5));
+				  System.out.println("NumberOfProducts: "+rs.getString(6));
 				
 				
-
-			
-
-			
-
+			}else {
+				System.out.println("please enter correct details");
+				
+			}
+	
 		}
+			catch(Exception e) {
+				e.printStackTrace();
+			}return null;
+				
+		}
+
+		
+
+		
 		
 	
 	
@@ -73,7 +77,7 @@ public class ProductDaoImpl  implements ProductDao{
 	@Override
 	public List<ProductBean> showAllProducts() {
 		List<ProductBean> list=new ArrayList<ProductBean>();
-		try(Connection conn=DriverManager.getConnection(prop.getProperty("dbUrl"));
+		try(Connection conn=DriverManager.getConnection(prop.getProperty("dbUrl"),prop.getProperty("dbUser"),prop.getProperty("dbPassword"));
 				Statement stmt=conn.createStatement();
 				
 				ResultSet rs=stmt.executeQuery(prop.getProperty("query1"))){
@@ -85,6 +89,7 @@ public class ProductDaoImpl  implements ProductDao{
 				product.setProductColor(rs.getNString(4));
 				product.setDescription(rs.getString(5));
 				product.setNumberOfProducts(rs.getInt(6));
+				list.add(product);
 		}return list;
 				
 		}catch(Exception e) {

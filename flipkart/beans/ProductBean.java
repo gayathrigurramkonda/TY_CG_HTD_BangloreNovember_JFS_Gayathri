@@ -43,6 +43,13 @@ public class ProductBean {
 	public synchronized void setNumberOfProducts(int numberOfProducts) {
 		this.numberOfProducts = numberOfProducts;
 	}
+	@Override
+	public String toString() {
+		return "ProductBean [productId=" + productId + ", ProductName=" + ProductName + ", productCost=" + productCost
+				+ ", productColor=" + productColor + ", description=" + description + ", numberOfProducts="
+				+ numberOfProducts + "]";
+	}
+	
 	
 	
 
